@@ -1,0 +1,240 @@
+:root {
+  --bg: #070b14;
+  --bg-elevated: #0f1623;
+  --surface: #162033;
+  --text: #ffffff;
+  --muted: #8b9bb4;
+  --accent: #2ee6ff;
+  --accent-dark: #0e7490;
+  --border: #1e2a3f;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(7, 11, 20, 0.92);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}
+.nav-left, .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0.15rem; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.nav-links a.active {
+  background: var(--surface);
+  color: var(--text);
+}
+.cta {
+  background: var(--accent);
+  color: #041014;
+  border: none;
+  padding: 0.5rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Featured hero banner */
+.hero {
+  position: relative;
+  margin: 1.5rem 1.75rem 0;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 320px;
+  background:
+    linear-gradient(90deg, rgba(7,11,20,0.92) 0%, rgba(7,11,20,0.4) 55%, rgba(7,11,20,0.15) 100%),
+    url('https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg') center/cover;
+  display: flex;
+  align-items: flex-end;
+  padding: 2.5rem;
+}
+.hero-content { max-width: 560px; }
+.hero-label {
+  display: inline-block;
+  background: var(--accent);
+  color: #041014;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+.hero p { color: #cbd5e1; margin: 0.75rem 0 0; font-size: 1.05rem; }
+
+/* Search + filters */
+.search-wrap { max-width: 680px; margin: 1.75rem auto 0.75rem; padding: 0 1.75rem; }
+.search {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.1rem;
+  color: var(--text);
+  font-size: 1rem;
+}
+.search::placeholder { color: var(--muted); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+  padding: 0.5rem 1.75rem 1.75rem;
+}
+.filter-pill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.filter-pill.active {
+  background: #fff;
+  color: #070b14;
+  border-color: #fff;
+}
+
+/* Main */
+.main { max-width: 1280px; margin: 0 auto; padding: 0 1.75rem 5rem; }
+.section { margin-bottom: 4rem; }
+.section h2 {
+  margin: 0 0 1.1rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+.subtitle { color: var(--muted); font-size: 0.95rem; margin: -0.6rem 0 1.4rem; }
+
+.tabs { display: flex; gap: 0.45rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+.tab {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.tab.active { background: #fff; color: #070b14; border-color: #fff; }
+
+/* Leaderboard */
+.leaderboard {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.lb-row {
+  display: grid;
+  grid-template-columns: 3rem 1.25rem 1fr auto auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.95rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: var(--surface); }
+.rank { font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 700; }
+.username { font-weight: 600; }
+.points { font-variant-numeric: tabular-nums; font-weight: 700; }
+.rarity { color: var(--muted); font-size: 0.88rem; }
+.platform-icon { width: 1.1rem; height: 1.1rem; border-radius: 4px; }
+.platform-icon[data-platform="playstation"] { background: #003791; }
+.platform-icon[data-platform="steam"] { background: #1b2838; }
+.platform-icon[data-platform="retro"] { background: #333; }
+
+/* Storefront cards */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+.card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #334155;
+}
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: #0a0f1a;
+  display: block;
+}
+.card-body { padding: 0.9rem 0.85rem 1.1rem; }
+.card-body h3 { margin: 0 0 0.25rem; font-size: 1rem; font-weight: 650; }
+.card-body p { margin: 0 0 0.55rem; font-size: 0.82rem; color: var(--muted); }
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface);
+  margin-right: 0.4rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.count, .rarity { font-size: 0.82rem; color: var(--muted); }
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+  .nav { padding: 0.75rem 1rem; }
+  .nav-links { display: none; }
+  .hero { margin: 1rem; padding: 1.75rem; min-height: 260px; }
+  .lb-row { grid-template-columns: 2.2rem 1rem 1fr auto; }
+  .rarity { display: none; }
+  .card img { height: 220px; }
+}
